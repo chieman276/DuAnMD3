@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\BranchController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\UserGroupController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +17,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/index', function () {
     return view('welcome');
+  
+})->name('index');
+
+// Route::get('/manage', function() {
+//     return view('admin.layouts.master');
+
+// });
+
+// Route::get('/logins', function() {
+//     return view('admin.users.login');
+
+// });
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('branches', BranchController::class);
+    Route::resource('userGroups', UserGroupController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('roles', RoleController::class);
+
 });
+

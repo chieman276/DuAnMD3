@@ -22,7 +22,7 @@ return new class extends Migration
             $table->double('area');
             $table->string('juridical');
             $table->string('google_map');
-            $table->double('stress_width');
+            $table->double('street_width');
             $table->string('created_ad');
             $table->unsignedBigInteger('product_category_id');
             $table->foreign('product_category_id')->references('id')->on('product_categories');
@@ -30,8 +30,8 @@ return new class extends Migration
             $table->foreign('district_id')->references('id')->on('districts');
             $table->unsignedBigInteger('province_id');
             $table->foreign('province_id')->references('id')->on('provinces');
-            $table->unsignedBigInteger('vard_id');
-            $table->foreign('vard_id')->references('id')->on('vards');
+            $table->unsignedBigInteger('ward_id');
+            $table->foreign('ward_id')->references('id')->on('wards');
            
             $table->timestamps();
 
