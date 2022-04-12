@@ -29,7 +29,7 @@
                     @endif
                     </div>
                     <div class="form-group">
-                        <label for="tf1">Ngày sinh <noscript></noscript></label> <input name="birthday" type="text" class="form-control" id="" placeholder="nhập ngày sinh "> <small id="" class="form-text text-muted"></small>
+                        <label for="tf1">Ngày sinh <noscript></noscript></label> <input name="birthday" type="date" class="form-control" id="" placeholder="nhập ngày sinh "> <small id="" class="form-text text-muted"></small>
                         @if ($errors->any())
                     <p style="color:red">{{ $errors->first('birthday') }}</p>
                     @endif
@@ -53,7 +53,7 @@
                     @endif
                     </div>
                     <div class="form-group">
-                        <label for="tf1">Ngày làm việc</label> <input name="start_day" type="text" class="form-control" id="" placeholder="nhập ngày làm việc"> <small id="" class="form-text text-muted"></small>
+                        <label for="tf1">Ngày làm việc</label> <input name="start_day" type="date" class="form-control" id="" placeholder="nhập ngày làm việc"> <small id="" class="form-text text-muted"></small>
                         @if ($errors->any())
                     <p style="color:red">{{ $errors->first('start_day') }}</p>
                     @endif

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- End Required meta tags -->
     <!-- Begin SEO tag -->
-    <title> Starter Template | Looper - Bootstrap 4 Admin Theme </title>
+    <title> Bất động sản</title>
     <meta property="og:title" content="Starter Template">
     <meta name="author" content="Beni Arisandi">
     <meta property="og:locale" content="en_US">

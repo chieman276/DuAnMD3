@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\ProductCategory;
 use App\Http\Requests\StoreProductCategoryRequest;
 use App\Http\Requests\UpdateProductCategoryRequest;
+use App\Models\ProductCategory;
+use Illuminate\Http\Request;
 
 class ProductCategoryController extends Controller
 {
@@ -16,7 +17,8 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $productCategories = ProductCategory::all();
+        return view('admin.productCategories.index', compact('productCategories'));
     }
 
     /**
@@ -26,7 +28,7 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.productCategories.index');
     }
 
     /**
@@ -35,9 +37,16 @@ class ProductCategoryController extends Controller
      * @param  \App\Http\Requests\StoreProductCategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProductCategoryRequest $request)
+    public function store(Request $request)
     {
-        //
+        $productCategory = new ProductCategory();
+        $productCategory->name = $request->name;
+        $productCategory->save();
+
+        return redirect()->route('productCategories.index')->with('success','Thêm'. ' ' . $request->name.' '.  'thành công');
+
+
+
     }
 
     /**
@@ -57,9 +66,13 @@ class ProductCategoryController extends Controller
      * @param  \App\Models\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProductCategory $productCategory)
+    public function edit( $id)
     {
-        //
+        $productCategory = ProductCategory::find($id);
+        $params = [
+            'productCategory' => $productCategory
+        ];
+        return view('admin.productCategories.index', $params);
     }
 
     /**
@@ -69,9 +82,12 @@ class ProductCategoryController extends Controller
      * @param  \App\Models\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProductCategoryRequest $request, ProductCategory $productCategory)
+    public function update(UpdateProductCategoryRequest $request,  $id)
     {
-        //
+        ProductCategory::find($id)->update($request->only('name'));
+        return redirect()->route('productCategories.index')->with('success', 'Sửa danh mục'. ' ' . $request->name.' ' .'thành công');
+
+        
     }
 
     /**
@@ -80,8 +96,12 @@ class ProductCategoryController extends Controller
      * @param  \App\Models\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductCategory $productCategory)
+    public function destroy( $id)
     {
-        //
+        $productCategory = ProductCategory::find($id);
+        $productCategory->delete();
+
+        return redirect()->route('productCategories.index')->with('success','Xóa  thành công');
+
     }
 }

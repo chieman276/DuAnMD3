@@ -20,17 +20,26 @@
         <div class="card-body">
             <form method="post" action="{{route('branches.update',$branch->id)}}">
                 @csrf
-                @method('post')
+                @method('PUT')
                 <fieldset>
                     <legend>Base style</legend>
                     <div class="form-group">
                         <label for="tf1">Tên chi nhánh</label> <input type="text" name="name" value="{{ $branch->name }}" class="form-control" placeholder="nhập tên chi nhánh"> <small class="form-text text-muted"></small>
+                        @if ($errors->any())
+                    <p style="color:red">{{ $errors->first('name') }}</p>
+                    @endif
                     </div>
                     <div class="form-group">
                         <label for="tf1"> Địa chỉ </label> <input type="text" name="address" value="{{ $branch->address }} " class="form-control" placeholder="nhập địa chỉ"> <small class="form-text text-muted"></small>
+                        @if ($errors->any())
+                    <p style="color:red">{{ $errors->first('address') }}</p>
+                    @endif
                     </div>
                     <div class="form-group">
                         <label for="tf1">Số điện thoại</label> <input type="text" name="phone" value=" {{ $branch->phone }} " class="form-control" placeholder="nhập số điện thoại"> <small class="form-text text-muted"></small>
+                        @if ($errors->any())
+                    <p style="color:red">{{ $errors->first('phone') }}</p>
+                    @endif
                     </div>
 
 

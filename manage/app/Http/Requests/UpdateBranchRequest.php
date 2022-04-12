@@ -13,7 +13,7 @@ class UpdateBranchRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,19 @@ class UpdateBranchRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'vui lòng nhập chi nhánh',
+            'address.required' => 'vui lòng nhập địa chỉ chi nhánh',
+            'phone.required' => 'vui lòng nhập số điện thoại',
+        ];
+    }
+
 }

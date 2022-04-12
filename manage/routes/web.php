@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BranchController;
+use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserGroupController;
@@ -33,10 +34,12 @@ Route::get('/index', function () {
 // });
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::resource('branches', BranchController::class);
     Route::resource('userGroups', UserGroupController::class);
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);
-
+    Route::resource('productCategories', ProductCategoryController::class);
 });
 
+
+Route::resource('branches', BranchController::class);
+Route::get('search', [BranchController::class])->name('branches.search');

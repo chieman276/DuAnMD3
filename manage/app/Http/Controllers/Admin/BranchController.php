@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Branch;
 use App\Http\Requests\StoreBranchRequest;
 use App\Http\Requests\UpdateBranchRequest;
+use App\Models\Branch;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class BranchController extends Controller
 {
@@ -15,10 +16,22 @@ class BranchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $branches = Branch::all();
+        $branches = Branch::paginate(3);
+        $search = $request->search;
+
+        $branches = Branch::select('*');
+
+
+        if ($search) {
+            $branches = $branches->where('name', 'like', '%' . $search . '%')->where('name', $search)->orwhere('id', $search);
+        }
+
+        $branches = $branches->paginate(3);
+
         return view('admin.branches.index', compact('branches'));
+
     }
 
     /**
@@ -38,7 +51,7 @@ class BranchController extends Controller
      * @param  \App\Http\Requests\StoreBranchRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBranchRequest $request)
     {
 
 
@@ -90,7 +103,7 @@ class BranchController extends Controller
     public function update(UpdateBranchRequest $request, $id)
     {
         Branch::find($id)->update($request->only('name'));
-        return redirect()->route('branches.index')->with('success', 'Sửa sản phẩm'. ' ' . $request->name.' ' .'thành công');
+        return redirect()->route('branches.index')->with('success', 'Sửa '. ' ' . $request->name.' ' .'thành công');
 
     }
 

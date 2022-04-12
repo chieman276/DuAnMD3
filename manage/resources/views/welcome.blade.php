@@ -17,10 +17,10 @@
   <a class="btn btn-success" href="{{ route('branches.index')}}" style="width: 325px; height:100px; color:yellow">
     <h1> <i> Chi Nhánh</i></h1>
   </a>
-  <a class="btn btn-success" href="{{ route('branches.index')}}" style="width: 325px; height:100px; color:yellow">
+  <a class="btn btn-success" href="{{ route('users.index')}}" style="width: 325px; height:100px; color:yellow">
     <h1> <i> Nhân Viên</i></h1>
   </a>
-  <a class="btn btn-success" href="{{ route('branches.index')}}" style="width: 325px; height:100px; color:yellow">
+  <a class="btn btn-success" href="{{ route('userGroups.index')}}" style="width: 325px; height:100px; color:yellow">
     <h1> <i> Nhóm nhân viên</i></h1>
   </a>
   <br>
@@ -29,10 +29,10 @@
   <a class="btn btn-success" href="{{ route('branches.index')}}" style="width: 325px; height:100px; color:yellow">
     <h1> <i> Sản Phẩm</i></h1>
   </a>
-  <a class="btn btn-success" href="{{ route('branches.index')}}" style="width: 325px; height:100px; color:yellow">
+  <a class="btn btn-success" href="{{ route('productCategories.index')}}" style="width: 325px; height:100px; color:yellow">
     <h1> <i> Danh mục sản phẩm</i></h1>
   </a>
-  <a class="btn btn-success" href="{{ route('branches.index')}}" style="width: 325px; height:100px; color:yellow">
+  <a class="btn btn-success" href="{{ route('roles.index')}}" style="width: 325px; height:100px; color:yellow">
     <h1> <i> Vai trò</i></h1>
   </a>
 </body>
