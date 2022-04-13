@@ -13,7 +13,7 @@
     </nav>
     <button type="button" class="btn btn-success btn-floated"><span class="fa fa-plus"></span></button>
     <div class="d-md-flex align-items-md-start">
-        <h1 class="page-title mr-sm-auto"> Danh sách nhân viên</h1><!-- .btn-toolbar -->
+        <h1 class="page-title mr-sm-auto"> Danh mục sản phẩm</h1><!-- .btn-toolbar -->
         <div class="btn-toolbar">
             <button type="button" class="btn btn-light"><i class="fa-solid fa-file-export"></i> <span class="ml-1">Export</span></button> <button type="button" class="btn btn-light"><i class="oi oi-data-transfer-upload"></i> <span class="ml-1">Import</span></button>
             <div class="dropdown">
@@ -65,7 +65,7 @@
                 <table class="table">
                     <thead>
                         <div class="col-lg-12 mt-3">
-                            <a href="{{route('users.create')}}" class="btn btn-primary">Thêm Nhân Viên</a>
+                            <a href="{{route('productCategories.create')}}" class="btn btn-primary">Thêm nhóm</a>
                         </div>
                         <br>
                         @if (Session::has('success'))
@@ -75,40 +75,26 @@
                         <tr>
 
                             <th> # </th>
-                            <th> Tên nhân viên</th>
-                            <th> Ngày sinh</th>
-                            <th> Địa chỉ</th>
-                            <th> Email</th>
-                            <th> Mật khẩu</th>
-                            <th> Ngày làm việc</th>
-                            <th> Nhóm nhân viên</th>
-                            <th> Chi nhánh</th>
-
+                            <th> Tên danh mục</th>
+                            <th> chức năng </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user)
+                        @foreach ($productCategories as $productCategory)
                         <tr>
 
-                            <td class="align-middle"> {{ $user->id }} </td>
-                            <td class="align-middle"> {{ $user->name }} </td>
-                            <td class="align-middle"> {{ $user->birthday }} </td>
-                            <td class="align-middle"> {{ $user->address }} </td>
-                            <td class="align-middle"> {{ $user->email }} </td>
-                            <td class="align-middle"> {{ $user->password }} </td>
-                            <td class="align-middle"> {{ $user->start_day }} </td>
-                            <td class="align-middle"> {{ $user->users_group_id }} </td>
-                            <td class="align-middle"> {{ $user->branch_id }} </td>
+                            <td class="align-middle"> {{ $productCategory->id }} </td>
+                            <td class="align-middle"> {{ $productCategory->name }} </td>
                             <td>
-                                <form action="{{ route('users.destroy',$user->id )}}" style="display:inline" method="post">
+                                <form action="{{ route('productCategories.destroy',$productCategory->id )}}" style="display:inline" method="post">
 
-                                    <button  onclick="return confirm('Xóa {{$user->name}} ?')" class="btn btn-sm btn-icon btn-secondary"><i class="far fa-trash-alt"></i></button>
+                                    <button  onclick="return confirm('Xóa {{$productCategory->name}} ?')" class="btn btn-sm btn-icon btn-secondary"><i class="far fa-trash-alt"></i></button>
                                     @csrf
                                     @method('delete')
 
 
                                 </form>
-                                <span class="sr-only">Edit</span></a> <a href="{{route('users.edit',$user->id)}}" class="btn btn-sm btn-icon btn-secondary"><i class="fa fa-pencil-alt"></i> <span class="sr-only">Remove</span></a>
+                                <span class="sr-only">Edit</span></a> <a href="{{route('productCategories.edit',$productCategory->id)}}" class="btn btn-sm btn-icon btn-secondary"><i class="fa fa-pencil-alt"></i> <span class="sr-only">Remove</span></a>
                             </td>
             
 
